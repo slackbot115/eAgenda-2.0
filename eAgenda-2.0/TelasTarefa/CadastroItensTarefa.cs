@@ -52,5 +52,10 @@ namespace eAgenda_2._0
                 txtTituloItem.Text = String.Empty;
             }
         }
+
+        private void CadastroItensTarefa_Load(object sender, EventArgs e)
+        {
+            pbarCompletude.Value = (int)tarefa.CalcularPercentualConcluido();
+        }
     }
 }

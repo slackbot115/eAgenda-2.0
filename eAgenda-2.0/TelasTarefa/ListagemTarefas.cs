@@ -31,19 +31,40 @@ namespace eAgenda_2._0
 
             listTarefasConcluidas.Items.Clear();
 
-            foreach (Tarefa t in tarefasConcluidas)
+            foreach (Tarefa tarefa in tarefasConcluidas)
             {
-                listTarefasConcluidas.Items.Add(t);
+                listTarefasConcluidas.Items.Add(tarefa);
             }
 
+            // Exibindo tarefas pendentes por prioridade
             List<Tarefa> tarefasPendentes = repositorioTarefa.SelecionarTarefasPendentes();
 
             listTarefasPendentes.Items.Clear();
 
-            foreach (Tarefa t in tarefasPendentes)
+            foreach (Tarefa tarefa in tarefasPendentes)
             {
-                listTarefasPendentes.Items.Add(t);
+                if (tarefa.Prioridade == "Alta")
+                {
+                    listTarefasPendentes.Items.Add(tarefa);
+                }
             }
+
+            foreach (Tarefa tarefa in tarefasPendentes)
+            {
+                if (tarefa.Prioridade == "Média")
+                {
+                    listTarefasPendentes.Items.Add(tarefa);
+                }
+            }
+
+            foreach (Tarefa tarefa in tarefasPendentes)
+            {
+                if (tarefa.Prioridade == "Baixa")
+                {
+                    listTarefasPendentes.Items.Add(tarefa);
+                }
+            }
+
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -86,11 +107,11 @@ namespace eAgenda_2._0
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            Tarefa tarefaSelecionada = (Tarefa)listTarefasConcluidas.SelectedItem;
 
             if (tarefaSelecionada == null)
             {
-                MessageBox.Show("Selecione uma tarefa primeiro",
+                MessageBox.Show("Só é possivel excluir uma tarefa concluída",
                 "Exclusão de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
@@ -150,6 +171,32 @@ namespace eAgenda_2._0
                 repositorioTarefa.AtualizarItens(tarefaSelecionada, itensConcluidos, itensPendentes);
                 CarregarTarefas();
             }
+        }
+
+        private void listTarefasPendentes_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Tarefa? tarefaExibida = (Tarefa) listTarefasPendentes.Items[e.Index];
+
+            e.DrawBackground();
+            Brush corLinha = Brushes.Black;
+
+            if (tarefaExibida.Prioridade == "Alta")
+            {
+                corLinha = Brushes.Red;
+            }
+            else if(tarefaExibida.Prioridade == "Média")
+            {
+                corLinha = Brushes.DarkOrange;
+            }
+            else
+            {
+                corLinha = Brushes.Green;
+            }
+
+            e.Graphics.DrawString(((ListBox)sender).Items[e.Index].ToString(),
+                e.Font, corLinha, e.Bounds, StringFormat.GenericDefault);
+
+            e.DrawFocusRectangle();
         }
     }
 }

@@ -59,5 +59,10 @@ namespace eAgenda_2._0
                     .ToList();
             }
         }
+
+        private void AtualizacaoItensTarefa_Load(object sender, EventArgs e)
+        {
+            pbarCompletude.Value = (int)tarefa.CalcularPercentualConcluido();
+        }
     }
 }

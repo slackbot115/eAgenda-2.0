@@ -123,6 +123,10 @@
             // 
             // listTarefasPendentes
             // 
+            this.listTarefasPendentes.BackColor = System.Drawing.Color.White;
+            this.listTarefasPendentes.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.listTarefasPendentes.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.listTarefasPendentes.ForeColor = System.Drawing.Color.White;
             this.listTarefasPendentes.FormattingEnabled = true;
             this.listTarefasPendentes.ItemHeight = 20;
             this.listTarefasPendentes.Location = new System.Drawing.Point(6, 15);
@@ -130,6 +134,7 @@
             this.listTarefasPendentes.Name = "listTarefasPendentes";
             this.listTarefasPendentes.Size = new System.Drawing.Size(612, 284);
             this.listTarefasPendentes.TabIndex = 6;
+            this.listTarefasPendentes.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTarefasPendentes_DrawItem);
             // 
             // tabPage2
             // 
@@ -157,7 +162,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(679, 450);
+            this.ClientSize = new System.Drawing.Size(656, 450);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnAtualizarItens);
             this.Controls.Add(this.btnCadastrarItens);

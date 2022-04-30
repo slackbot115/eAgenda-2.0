@@ -36,8 +36,16 @@ namespace eAgenda_2._0
         }      
 
         private void btnGravar_Click(object sender, EventArgs e)
-        {            
+        {
+            if (String.IsNullOrEmpty(txtTitulo.Text))
+            {
+                MessageBox.Show("Título inválido", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+            }
             tarefa.Titulo = txtTitulo.Text;
+
+            if (String.IsNullOrEmpty(comboPrioridade.Text))
+                comboPrioridade.Text = "Baixa";
+
             tarefa.Prioridade = comboPrioridade.Text;
         }
     }
