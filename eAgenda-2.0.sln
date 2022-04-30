@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda-2.0", "eAgenda-2.0\eAgenda-2.0.csproj", "{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66}"
+	ProjectSection(ProjectDependencies) = postProject
+		{00421469-2DF4-43BB-9901-12F08017E0C0} = {00421469-2DF4-43BB-9901-12F08017E0C0}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Apresentacao", "Apresentacao", "{7B750F32-7507-4615-A437-E763B7272D97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{B48055D6-FB0F-4295-AA5C-2B088D3B1D56}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{48182719-9E2C-4ECC-8B1A-D1B14A654C83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda-2.0.Dominio", "eAgenda-2.0.Dominio\eAgenda-2.0.Dominio.csproj", "{00421469-2DF4-43BB-9901-12F08017E0C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgenda-2.0.Infra.Arquivos", "eAgenda-2.0.Infra.Arquivos\eAgenda-2.0.Infra.Arquivos.csproj", "{CC1AE162-3035-4483-8F6E-FFDFE2146618}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arquivos", "Arquivos", "{3F1FF86D-689B-4049-A3BD-18AD7B717709}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00421469-2DF4-43BB-9901-12F08017E0C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00421469-2DF4-43BB-9901-12F08017E0C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00421469-2DF4-43BB-9901-12F08017E0C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00421469-2DF4-43BB-9901-12F08017E0C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC1AE162-3035-4483-8F6E-FFDFE2146618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC1AE162-3035-4483-8F6E-FFDFE2146618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC1AE162-3035-4483-8F6E-FFDFE2146618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC1AE162-3035-4483-8F6E-FFDFE2146618}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{006C1E55-EBA3-4E9B-BD53-EF9AF4C9BF66} = {7B750F32-7507-4615-A437-E763B7272D97}
+		{00421469-2DF4-43BB-9901-12F08017E0C0} = {B48055D6-FB0F-4295-AA5C-2B088D3B1D56}
+		{CC1AE162-3035-4483-8F6E-FFDFE2146618} = {3F1FF86D-689B-4049-A3BD-18AD7B717709}
+		{3F1FF86D-689B-4049-A3BD-18AD7B717709} = {48182719-9E2C-4ECC-8B1A-D1B14A654C83}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF11190A-41A6-4F7E-A02A-72068754550D}
+	EndGlobalSection
+EndGlobal
