@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eAgenda_2._0.Dominio.ModuloCompromisso;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace eAgenda_2._0.Dominio.ModuloContato
         private string telefone;
         private string empresa;
         private string cargo;
+        private bool estaAnexado = false;
 
         public int Numero { get => numero; set => numero = value; }
         public string Nome { get => nome; set => nome = value; }
@@ -21,6 +23,7 @@ namespace eAgenda_2._0.Dominio.ModuloContato
         public string Telefone { get => telefone; set => telefone = value; }
         public string Empresa { get => empresa; set => empresa = value; }
         public string Cargo { get => cargo; set => cargo = value; }
+        public bool EstaAnexado { get => estaAnexado; set => estaAnexado = value; }
 
         public override string ToString()
         {

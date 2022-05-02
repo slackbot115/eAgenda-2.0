@@ -28,6 +28,11 @@ namespace eAgenda_2._0.Infra.Arquivos
             return contatos;
         }
 
+        public IEnumerable<IGrouping<string, Contato>> SelecionarContatosPorCargo()
+        {
+            return SelecionarTodos().GroupBy(x => x.Cargo);
+        }
+
         public void Inserir(Contato novoContato)
         {
             novoContato.Numero = ++contador;
@@ -43,6 +48,11 @@ namespace eAgenda_2._0.Infra.Arquivos
                 if (item.Numero == contato.Numero)
                 {
                     item.Nome = contato.Nome;
+                    item.Email = contato.Email;
+                    item.Telefone = contato.Telefone;
+                    item.Empresa = contato.Empresa;
+                    item.Cargo = contato.Cargo;
+                    item.EstaAnexado = contato.EstaAnexado;
                     break;
                 }
             }

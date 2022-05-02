@@ -1,5 +1,6 @@
 ﻿using eAgenda_2._0.Dominio;
 using eAgenda_2._0.Infra.Arquivos;
+using eAgenda_2._0.TelasCompromisso;
 using eAgenda_2._0.TelasContato;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,12 @@ namespace eAgenda_2._0
         {
             ListagemContatos listagemContatos = new ListagemContatos();
             listagemContatos.ShowDialog();
+        }
+
+        private void btnCompromissos_Click(object sender, EventArgs e)
+        {
+            ListagemCompromissos listagemCompromissos = new ListagemCompromissos();
+            listagemCompromissos.ShowDialog();
         }
     }
 }

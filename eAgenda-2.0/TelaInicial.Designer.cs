@@ -61,6 +61,7 @@
             this.btnCompromissos.TabIndex = 4;
             this.btnCompromissos.Text = "Gerenciamento de Compromissos";
             this.btnCompromissos.UseVisualStyleBackColor = true;
+            this.btnCompromissos.Click += new System.EventHandler(this.btnCompromissos_Click);
             // 
             // TelaInicial
             // 

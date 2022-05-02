@@ -37,16 +37,32 @@ namespace eAgenda_2._0
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
+            if (VerificarCamposVazios())
+            {
+                tarefa.Titulo = txtTitulo.Text;
+                if (String.IsNullOrEmpty(comboPrioridade.Text))
+                    comboPrioridade.Text = "Baixa";
+
+                tarefa.Prioridade = comboPrioridade.Text;
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                var resultado = MessageBox.Show("Título vazio, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Cancel)
+                    DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        private bool VerificarCamposVazios()
+        {
             if (String.IsNullOrEmpty(txtTitulo.Text))
             {
-                MessageBox.Show("Título inválido", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                return false;
             }
-            tarefa.Titulo = txtTitulo.Text;
-
-            if (String.IsNullOrEmpty(comboPrioridade.Text))
-                comboPrioridade.Text = "Baixa";
-
-            tarefa.Prioridade = comboPrioridade.Text;
+            else
+                return true;
         }
+
     }
 }

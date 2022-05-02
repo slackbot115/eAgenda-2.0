@@ -43,6 +43,7 @@ namespace eAgenda_2._0.Infra.Arquivos
                 if (item.Numero == tarefa.Numero)
                 {
                     item.Titulo = tarefa.Titulo;
+                    item.Prioridade = tarefa.Prioridade;
                     break;
                 }
             }

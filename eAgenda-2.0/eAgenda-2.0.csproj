@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TelasCompromisso\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="TelasTarefa\ListagemTarefas.cs">
       <SubType>Form</SubType>
     </Compile>

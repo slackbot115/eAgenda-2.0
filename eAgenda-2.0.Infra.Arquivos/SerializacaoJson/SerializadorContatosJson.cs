@@ -23,13 +23,13 @@ namespace eAgenda_2._0.Infra.Arquivos.SerializacaoJson
             if (File.Exists(arquivoContatos) == false)
                 return new List<Contato>();
 
-            string tarefasJson = File.ReadAllText(arquivoContatos);
+            string contatosJson = File.ReadAllText(arquivoContatos);
 
             JsonSerializerSettings settings = new JsonSerializerSettings();
 
             settings.Formatting = Formatting.Indented;
 
-            return JsonConvert.DeserializeObject<List<Contato>>(tarefasJson, settings);
+            return JsonConvert.DeserializeObject<List<Contato>>(contatosJson, settings);
         }
 
         public void GravarContatosEmArquivo(List<Contato> contatos)
@@ -38,9 +38,9 @@ namespace eAgenda_2._0.Infra.Arquivos.SerializacaoJson
 
             settings.Formatting = Formatting.Indented;
 
-            string tarefasJson = JsonConvert.SerializeObject(contatos, settings);
+            string contatosJson = JsonConvert.SerializeObject(contatos, settings);
 
-            File.WriteAllText(arquivoContatos, tarefasJson);
+            File.WriteAllText(arquivoContatos, contatosJson);
         }
     }
 }

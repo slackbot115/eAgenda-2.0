@@ -28,6 +28,7 @@ namespace eAgenda_2._0.TelasContato
                 txtNumero.Text = contato.Numero.ToString();
                 txtNome.Text = contato.Nome;
                 txtEmail.Text = contato.Email;
+                maskTelefone.Text = contato.Telefone;
                 txtEmpresa.Text = contato.Empresa;
                 txtCargo.Text = contato.Cargo;
             }
@@ -40,11 +41,15 @@ namespace eAgenda_2._0.TelasContato
                 contato.Nome = txtNome.Text;
                 contato.Email = txtEmail.Text;
                 contato.Empresa = txtEmpresa.Text;
+                contato.Telefone = maskTelefone.Text;
                 contato.Cargo = txtCargo.Text;
+                DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                var resultado = MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Cancel)
+                    DialogResult = DialogResult.Cancel;
             }
         }
 

@@ -32,6 +32,13 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
             this.listContatos = new System.Windows.Forms.ListBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabContatos = new System.Windows.Forms.TabPage();
+            this.tabContatosOrdenados = new System.Windows.Forms.TabPage();
+            this.listContatosOrdenados = new System.Windows.Forms.ListBox();
+            this.tabControl1.SuspendLayout();
+            this.tabContatos.SuspendLayout();
+            this.tabContatosOrdenados.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnExcluir
@@ -70,17 +77,57 @@
             // listContatos
             // 
             this.listContatos.ItemHeight = 20;
-            this.listContatos.Location = new System.Drawing.Point(12, 72);
+            this.listContatos.Location = new System.Drawing.Point(6, 6);
             this.listContatos.Name = "listContatos";
-            this.listContatos.Size = new System.Drawing.Size(655, 364);
+            this.listContatos.Size = new System.Drawing.Size(635, 324);
             this.listContatos.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabContatos);
+            this.tabControl1.Controls.Add(this.tabContatosOrdenados);
+            this.tabControl1.Location = new System.Drawing.Point(12, 72);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(655, 366);
+            this.tabControl1.TabIndex = 13;
+            // 
+            // tabContatos
+            // 
+            this.tabContatos.Controls.Add(this.listContatos);
+            this.tabContatos.Location = new System.Drawing.Point(4, 29);
+            this.tabContatos.Name = "tabContatos";
+            this.tabContatos.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContatos.Size = new System.Drawing.Size(647, 333);
+            this.tabContatos.TabIndex = 0;
+            this.tabContatos.Text = "Contatos";
+            this.tabContatos.UseVisualStyleBackColor = true;
+            // 
+            // tabContatosOrdenados
+            // 
+            this.tabContatosOrdenados.Controls.Add(this.listContatosOrdenados);
+            this.tabContatosOrdenados.Location = new System.Drawing.Point(4, 29);
+            this.tabContatosOrdenados.Name = "tabContatosOrdenados";
+            this.tabContatosOrdenados.Padding = new System.Windows.Forms.Padding(3);
+            this.tabContatosOrdenados.Size = new System.Drawing.Size(647, 333);
+            this.tabContatosOrdenados.TabIndex = 1;
+            this.tabContatosOrdenados.Text = "Contatos ordenados";
+            this.tabContatosOrdenados.UseVisualStyleBackColor = true;
+            // 
+            // listContatosOrdenados
+            // 
+            this.listContatosOrdenados.ItemHeight = 20;
+            this.listContatosOrdenados.Location = new System.Drawing.Point(3, 3);
+            this.listContatosOrdenados.Name = "listContatosOrdenados";
+            this.listContatosOrdenados.Size = new System.Drawing.Size(635, 324);
+            this.listContatosOrdenados.TabIndex = 1;
             // 
             // ListagemContatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(679, 450);
-            this.Controls.Add(this.listContatos);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnInserir);
@@ -90,6 +137,9 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Contatos";
+            this.tabControl1.ResumeLayout(false);
+            this.tabContatos.ResumeLayout(false);
+            this.tabContatosOrdenados.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -99,5 +149,9 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.ListBox listContatos;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabContatos;
+        private System.Windows.Forms.TabPage tabContatosOrdenados;
+        private System.Windows.Forms.ListBox listContatosOrdenados;
     }
 }

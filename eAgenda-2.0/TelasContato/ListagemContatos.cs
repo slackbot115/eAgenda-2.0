@@ -36,6 +36,26 @@ namespace eAgenda_2._0.TelasContato
             {
                 listContatos.Items.Add(contato);
             }
+
+            IEnumerable<IGrouping<string, Contato>> contatosPorCargo =
+                repositorioContato.SelecionarContatosPorCargo();
+
+            listContatosOrdenados.Items.Clear();
+
+            foreach (var cargos in contatosPorCargo)
+            {
+                if(String.IsNullOrEmpty(cargos.Key))
+                    listContatosOrdenados.Items.Add("\nCargo não informado");
+                else
+                    listContatosOrdenados.Items.Add("\nCargo: " + cargos.Key);
+                foreach (var contato in contatos)
+                {
+                    if (contato.Cargo == cargos.Key)
+                    {
+                        listContatosOrdenados.Items.Add(contato.ToString());
+                    }
+                }
+            }
         }
 
         private void btnInserir_Click(object sender, EventArgs e)
@@ -82,6 +102,12 @@ namespace eAgenda_2._0.TelasContato
             if (contatoSelecionado == null)
             {
                 MessageBox.Show("Selecione um contato primeiro", "Exclusão de Contatos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (contatoSelecionado.EstaAnexado == true)
+            {
+                MessageBox.Show("Não é possível excluir um contato que está anexado à um compromisso aberto", "Exclusão de Contatos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
