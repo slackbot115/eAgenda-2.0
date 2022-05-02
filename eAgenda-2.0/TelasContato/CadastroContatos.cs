@@ -1,4 +1,6 @@
 ﻿using eAgenda_2._0.Dominio.ModuloContato;
+using eAgenda_2._0.Infra.Arquivos;
+using eAgenda_2._0.Infra.Arquivos.SerializacaoJson;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +16,16 @@ namespace eAgenda_2._0.TelasContato
     public partial class CadastroContatos : Form
     {
         private Contato contato;
+        private IRepositorioContato repositorioContato;
+        private List<Contato> contatos;
 
         public CadastroContatos()
         {
+            SerializadorContatosJson serializadorContatos = new SerializadorContatosJson();
+            repositorioContato = new RepositorioContatoEmArquivo(serializadorContatos);
+
+            contatos = repositorioContato.SelecionarTodos();
+
             InitializeComponent();
         }
 
@@ -43,14 +52,23 @@ namespace eAgenda_2._0.TelasContato
                 contato.Empresa = txtEmpresa.Text;
                 contato.Cargo = txtCargo.Text;
 
-                if (VerificarEmailValido())
+                if (VerificarCamposDuplicados())
                 {
-                    contato.Email = txtEmail.Text;
-                    DialogResult = DialogResult.OK;
+                    if (VerificarEmailValido())
+                    {
+                        contato.Email = txtEmail.Text;
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        var resultado = MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                        if (resultado == DialogResult.Cancel)
+                            DialogResult = DialogResult.Cancel;
+                    }
                 }
                 else
                 {
-                    var resultado = MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                    var resultado = MessageBox.Show("Telefone ou email já estão cadastrados no sistema, digite outro", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
                     if (resultado == DialogResult.Cancel)
                         DialogResult = DialogResult.Cancel;
                 }
@@ -84,6 +102,18 @@ namespace eAgenda_2._0.TelasContato
             }
             else
                 return false;
+        }
+
+        private bool VerificarCamposDuplicados()
+        {
+            foreach (Contato contato in contatos)
+            {
+
+                if (txtEmail.Text == contato.Email || maskTelefone.Text == contato.Telefone)
+                    return false;
+            }
+
+            return true;
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using eAgenda_2._0.Dominio;
 using eAgenda_2._0.Dominio.ModuloTarefa;
+using eAgenda_2._0.Infra.Arquivos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,8 +17,16 @@ namespace eAgenda_2._0
     {
         private Tarefa tarefa;
 
+        private IRepositorioTarefa repositorioTarefa;
+        private List<Tarefa> tarefas;
+
         public CadastroTarefas()
         {
+            SerializadorTarefasJson serializadorTarefas = new SerializadorTarefasJson();
+            repositorioTarefa = new RepositorioTarefaEmArquivo(serializadorTarefas);
+
+            tarefas = repositorioTarefa.SelecionarTodos();
+
             InitializeComponent();
         }
 
@@ -39,12 +48,22 @@ namespace eAgenda_2._0
         {
             if (VerificarCamposVazios())
             {
-                tarefa.Titulo = txtTitulo.Text;
-                if (String.IsNullOrEmpty(comboPrioridade.Text))
-                    comboPrioridade.Text = "Baixa";
+                if (VerificarCamposDuplicados())
+                {
+                    tarefa.Titulo = txtTitulo.Text;
 
-                tarefa.Prioridade = comboPrioridade.Text;
-                DialogResult = DialogResult.OK;
+                    if (String.IsNullOrEmpty(comboPrioridade.Text))
+                        comboPrioridade.Text = "Baixa";
+
+                    tarefa.Prioridade = comboPrioridade.Text;
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    var resultado = MessageBox.Show("Já existe uma tarefa com esse título, digite outro", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Cancel)
+                        DialogResult = DialogResult.Cancel;
+                }
             }
             else
             {
@@ -62,6 +81,17 @@ namespace eAgenda_2._0
             }
             else
                 return true;
+        }
+
+        private bool VerificarCamposDuplicados()
+        {
+            foreach (Tarefa tarefa in tarefas)
+            {
+                if (txtTitulo.Text == tarefa.Titulo)
+                    return false;
+            }
+
+            return true;
         }
 
     }

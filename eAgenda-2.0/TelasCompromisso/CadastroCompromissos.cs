@@ -172,6 +172,5 @@ namespace eAgenda_2._0.TelasCompromisso
             else
                 return false;
         }
-
     }
 }

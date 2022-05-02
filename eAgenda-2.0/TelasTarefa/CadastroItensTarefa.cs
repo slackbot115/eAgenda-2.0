@@ -41,15 +41,33 @@ namespace eAgenda_2._0
         {            
             List<string> titulos = ItensAdicionados.Select(x => x.Titulo).ToList();
 
-            if (titulos.Count == 0 || titulos.Contains(txtTituloItem.Text) == false)
+            if (VerificarCamposVazios())
             {
-                ItemTarefa itemTarefa = new ItemTarefa();
+                if (VerificarCamposDuplicados())
+                {
+                    if (titulos.Count == 0 || titulos.Contains(txtTituloItem.Text) == false)
+                    {
+                        ItemTarefa itemTarefa = new ItemTarefa();
 
-                itemTarefa.Titulo = txtTituloItem.Text;
+                        itemTarefa.Titulo = txtTituloItem.Text;
 
-                listItensTarefa.Items.Add(itemTarefa);
+                        listItensTarefa.Items.Add(itemTarefa);
 
-                txtTituloItem.Text = String.Empty;
+                        txtTituloItem.Text = String.Empty;
+                    }
+                }
+                else
+                {
+                    var resultado = MessageBox.Show("Título do ítem já existe nesta tarefa, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Cancel)
+                        DialogResult = DialogResult.Cancel;
+                }
+            }
+            else
+            {
+                var resultado = MessageBox.Show("Título do ítem vazio, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Cancel)
+                    DialogResult = DialogResult.Cancel;
             }
         }
 
@@ -57,5 +75,27 @@ namespace eAgenda_2._0
         {
             pbarCompletude.Value = (int)tarefa.CalcularPercentualConcluido();
         }
+
+        private bool VerificarCamposVazios()
+        {
+            if (String.IsNullOrEmpty(txtTituloItem.Text))
+            {
+                return false;
+            }
+            else
+                return true;
+        }
+
+        private bool VerificarCamposDuplicados()
+        {
+            foreach (ItemTarefa item in ItensAdicionados)
+            {
+                if (txtTituloItem.Text == item.Titulo)
+                    return false;
+            }
+
+            return true;
+        }
+
     }
 }
