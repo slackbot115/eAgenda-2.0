@@ -36,18 +36,28 @@ namespace eAgenda_2._0.TelasContato
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (VerificarEmailValido())
+            if (VerificarCamposVazios())
             {
                 contato.Nome = txtNome.Text;
-                contato.Email = txtEmail.Text;
-                contato.Empresa = txtEmpresa.Text;
                 contato.Telefone = maskTelefone.Text;
+                contato.Empresa = txtEmpresa.Text;
                 contato.Cargo = txtCargo.Text;
-                DialogResult = DialogResult.OK;
+
+                if (VerificarEmailValido())
+                {
+                    contato.Email = txtEmail.Text;
+                    DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    var resultado = MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Cancel)
+                        DialogResult = DialogResult.Cancel;
+                }
             }
             else
             {
-                var resultado = MessageBox.Show("Email inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                var resultado = MessageBox.Show("Campos obrigatórios(*) vazios, preencha-os", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
                 if (resultado == DialogResult.Cancel)
                     DialogResult = DialogResult.Cancel;
             }
@@ -65,5 +75,16 @@ namespace eAgenda_2._0.TelasContato
                 return false;
             }
         }
+
+        private bool VerificarCamposVazios()
+        {
+            if (!String.IsNullOrEmpty(txtNome.Text) && !String.IsNullOrEmpty(txtEmail.Text) && maskTelefone.MaskCompleted)
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
     }
 }

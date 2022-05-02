@@ -60,19 +60,53 @@ namespace eAgenda_2._0.TelasCompromisso
 
         private void btnGravar_Click(object sender, EventArgs e)
         {
-            if (VerificarHorarioValido() && ValidarDataCompromisso())
+            if (VerificarCamposVazios())
             {
                 compromisso.Assunto = txtAssunto.Text;
                 compromisso.Local = txtLocal.Text;
-                compromisso.DataCompromisso = dateDataCompromisso.Value;
-                compromisso.HoraInicio = dateHoraInicio.Text;
-                compromisso.HoraTermino = dateHoraTermino.Text;
-                compromisso.Contato = ReceberContato(comboContatos.Text);
+
+                if (ValidarDataCompromisso())
+                {
+                    compromisso.DataCompromisso = dateDataCompromisso.Value;
+
+                    if (VerificarHorarioValido())
+                    {
+                        compromisso.HoraInicio = dateHoraInicio.Text;
+                        compromisso.HoraTermino = dateHoraTermino.Text;
+
+                        if (VerificarContatoVazio())
+                        {
+                            compromisso.Contato = ReceberContato(comboContatos.Text);
+                            DialogResult = DialogResult.OK;
+                        }
+                        else
+                        {
+                            var resultado = MessageBox.Show("Contato inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                            if (resultado == DialogResult.Cancel)
+                                DialogResult = DialogResult.Cancel;
+                        }
+                    }
+                    else
+                    {
+                        var resultado = MessageBox.Show("Horário inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                        if (resultado == DialogResult.Cancel)
+                            DialogResult = DialogResult.Cancel;
+                    }
+                }
+                else
+                {
+                    var resultado = MessageBox.Show("Data inválida, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                    if (resultado == DialogResult.Cancel)
+                        DialogResult = DialogResult.Cancel;
+                }
             }
             else
             {
-                MessageBox.Show("Horário inválido, tente novamente", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                var resultado = MessageBox.Show("Campos obrigatórios(*) vazios, preencha-os", "", MessageBoxButtons.RetryCancel, MessageBoxIcon.Warning);
+                if (resultado == DialogResult.Cancel)
+                    DialogResult = DialogResult.Cancel;
             }
+            
         }
 
         private bool ValidarDataCompromisso()
@@ -97,6 +131,16 @@ namespace eAgenda_2._0.TelasCompromisso
             }
         }
 
+        private bool VerificarCamposVazios()
+        {
+            if (!String.IsNullOrEmpty(txtAssunto.Text) && !String.IsNullOrEmpty(txtLocal.Text) && !String.IsNullOrEmpty(dateDataCompromisso.Text))
+            {
+                return true;
+            }
+            else
+                return false;
+        }
+
         private void CadastroCompromissos_Load(object sender, EventArgs e)
         {
             foreach (Contato contato in contatos)
@@ -119,6 +163,14 @@ namespace eAgenda_2._0.TelasCompromisso
             }
 
             return null;
+        }
+
+        private bool VerificarContatoVazio()
+        {
+            if (!String.IsNullOrEmpty(comboContatos.Text))
+                return true;
+            else
+                return false;
         }
 
     }
