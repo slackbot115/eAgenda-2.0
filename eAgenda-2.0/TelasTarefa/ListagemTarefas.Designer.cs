@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnInserir = new System.Windows.Forms.Button();
             this.btnAtualizarItens = new System.Windows.Forms.Button();
             this.btnCadastrarItens = new System.Windows.Forms.Button();
@@ -38,6 +39,7 @@
             this.listTarefasPendentes = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.listTarefasConcluidas = new System.Windows.Forms.ListBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -45,10 +47,10 @@
             // 
             // btnInserir
             // 
-            this.btnInserir.Location = new System.Drawing.Point(12, 13);
+            this.btnInserir.Location = new System.Drawing.Point(12, 14);
             this.btnInserir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(82, 52);
+            this.btnInserir.Size = new System.Drawing.Size(87, 51);
             this.btnInserir.TabIndex = 1;
             this.btnInserir.Text = "Inserir";
             this.btnInserir.UseVisualStyleBackColor = true;
@@ -56,10 +58,10 @@
             // 
             // btnAtualizarItens
             // 
-            this.btnAtualizarItens.Location = new System.Drawing.Point(511, 14);
+            this.btnAtualizarItens.Location = new System.Drawing.Point(556, 14);
             this.btnAtualizarItens.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAtualizarItens.Name = "btnAtualizarItens";
-            this.btnAtualizarItens.Size = new System.Drawing.Size(133, 51);
+            this.btnAtualizarItens.Size = new System.Drawing.Size(87, 51);
             this.btnAtualizarItens.TabIndex = 8;
             this.btnAtualizarItens.Text = "Atualizar Itens";
             this.btnAtualizarItens.UseVisualStyleBackColor = true;
@@ -67,10 +69,10 @@
             // 
             // btnCadastrarItens
             // 
-            this.btnCadastrarItens.Location = new System.Drawing.Point(353, 13);
+            this.btnCadastrarItens.Location = new System.Drawing.Point(420, 13);
             this.btnCadastrarItens.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCadastrarItens.Name = "btnCadastrarItens";
-            this.btnCadastrarItens.Size = new System.Drawing.Size(129, 51);
+            this.btnCadastrarItens.Size = new System.Drawing.Size(87, 51);
             this.btnCadastrarItens.TabIndex = 7;
             this.btnCadastrarItens.Text = "Cadastrar Itens";
             this.btnCadastrarItens.UseVisualStyleBackColor = true;
@@ -78,10 +80,10 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(238, 13);
+            this.btnExcluir.Location = new System.Drawing.Point(284, 14);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(86, 51);
+            this.btnExcluir.Size = new System.Drawing.Size(87, 51);
             this.btnExcluir.TabIndex = 6;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
@@ -89,10 +91,10 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(123, 13);
+            this.btnEditar.Location = new System.Drawing.Point(148, 14);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(86, 51);
+            this.btnEditar.Size = new System.Drawing.Size(87, 51);
             this.btnEditar.TabIndex = 5;
             this.btnEditar.Text = "Editar";
             this.btnEditar.UseVisualStyleBackColor = true;
@@ -135,6 +137,8 @@
             this.listTarefasPendentes.Size = new System.Drawing.Size(612, 284);
             this.listTarefasPendentes.TabIndex = 6;
             this.listTarefasPendentes.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listTarefasPendentes_DrawItem);
+            this.listTarefasPendentes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listTarefasPendentes_MouseDoubleClick);
+            this.listTarefasPendentes.MouseHover += new System.EventHandler(this.listTarefasPendentes_MouseHover);
             // 
             // tabPage2
             // 
@@ -194,5 +198,6 @@
         private System.Windows.Forms.ListBox listTarefasPendentes;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ListBox listTarefasConcluidas;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

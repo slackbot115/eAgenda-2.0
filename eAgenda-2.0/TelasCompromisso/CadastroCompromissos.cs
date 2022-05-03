@@ -145,7 +145,7 @@ namespace eAgenda_2._0.TelasCompromisso
         {
             foreach (Contato contato in contatos)
             {
-                if(contato.EstaAnexado == false)
+                if (contato.EstaAnexado == false)
                     comboContatos.Items.Add(contato.Nome);
             }
         }

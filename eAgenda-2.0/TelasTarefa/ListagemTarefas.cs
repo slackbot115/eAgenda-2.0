@@ -1,5 +1,6 @@
 ﻿using eAgenda_2._0.Dominio;
 using eAgenda_2._0.Infra.Arquivos;
+using eAgenda_2._0.TelasTarefa;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -197,6 +198,22 @@ namespace eAgenda_2._0
                 e.Font, corLinha, e.Bounds, StringFormat.GenericDefault);
 
             e.DrawFocusRectangle();
+        }
+
+        private void listTarefasPendentes_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Tarefa tarefaSelecionada = (Tarefa)listTarefasPendentes.SelectedItem;
+            
+            DetalhesTarefa tela = new DetalhesTarefa(tarefaSelecionada);
+            tela.Tarefa = tarefaSelecionada;
+            tela.ShowDialog();
+        }
+        
+        private void listTarefasPendentes_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.InitialDelay = 2000;
+            toolTip1.ReshowDelay = 4000;
+            toolTip1.SetToolTip(listTarefasPendentes, "Duplo clique para detalhes da tarefa");
         }
     }
 }

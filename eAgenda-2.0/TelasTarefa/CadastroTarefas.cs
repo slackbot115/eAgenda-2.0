@@ -41,6 +41,7 @@ namespace eAgenda_2._0
                 tarefa = value;
                 txtNumero.Text = tarefa.Numero.ToString();
                 txtTitulo.Text = tarefa.Titulo;
+                comboPrioridade.Text = tarefa.Prioridade;
             }
         }      
 
@@ -93,6 +94,5 @@ namespace eAgenda_2._0
 
             return true;
         }
-
     }
 }

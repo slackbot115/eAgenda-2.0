@@ -27,13 +27,7 @@ namespace eAgenda_2._0.Dominio.ModuloCompromisso
 
         public override string ToString()
         {
-            return "ID: " + Numero + Environment.NewLine +
-                "Assunto: " + Assunto + Environment.NewLine +
-                "Local: " + Local + Environment.NewLine +
-                "Contato: " + Contato.Nome + Environment.NewLine +
-                "Data do Compromisso: " + DataCompromisso + Environment.NewLine +
-                "Hora de Inicio: " + HoraInicio + Environment.NewLine +
-                "Hora de Termino: " + HoraTermino + Environment.NewLine;
+            return $"Número: {Numero} - Assunto: {Assunto} - Contato: {Contato.Nome}";
         }
     }
 }

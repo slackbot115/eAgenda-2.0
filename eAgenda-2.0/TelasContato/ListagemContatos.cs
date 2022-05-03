@@ -85,6 +85,7 @@ namespace eAgenda_2._0.TelasContato
 
             CadastroContatos tela = new CadastroContatos();
 
+            tela.Contato = contatoSelecionado;
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
@@ -119,6 +120,22 @@ namespace eAgenda_2._0.TelasContato
                 repositorioContato.Excluir(contatoSelecionado);
                 CarregarContatos();
             }
+        }
+
+        private void listContatos_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.InitialDelay = 2000;
+            toolTip1.ReshowDelay = 4000;
+            toolTip1.SetToolTip(listContatos, "Duplo clique para detalhes do contato");
+        }
+
+        private void listContatos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Contato contatoSelecionado = (Contato)listContatos.SelectedItem;
+
+            DetalhesContato tela = new DetalhesContato(contatoSelecionado);
+            tela.Contato = contatoSelecionado;
+            tela.ShowDialog();
         }
     }
 }

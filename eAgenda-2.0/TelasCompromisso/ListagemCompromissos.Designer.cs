@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listCompromissosFuturos = new System.Windows.Forms.ListBox();
@@ -36,6 +37,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
+            this.btnListarPeriodo = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -73,6 +76,8 @@
             this.listCompromissosFuturos.Name = "listCompromissosFuturos";
             this.listCompromissosFuturos.Size = new System.Drawing.Size(612, 304);
             this.listCompromissosFuturos.TabIndex = 8;
+            this.listCompromissosFuturos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listCompromissosFuturos_MouseDoubleClick);
+            this.listCompromissosFuturos.MouseHover += new System.EventHandler(this.listCompromissosFuturos_MouseHover);
             // 
             // tabPage2
             // 
@@ -98,7 +103,7 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(558, 23);
+            this.btnExcluir.Location = new System.Drawing.Point(358, 23);
             this.btnExcluir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(86, 51);
@@ -109,7 +114,7 @@
             // 
             // btnEditar
             // 
-            this.btnEditar.Location = new System.Drawing.Point(283, 22);
+            this.btnEditar.Location = new System.Drawing.Point(183, 23);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(86, 51);
@@ -129,11 +134,23 @@
             this.btnInserir.UseVisualStyleBackColor = true;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
+            // btnListarPeriodo
+            // 
+            this.btnListarPeriodo.Location = new System.Drawing.Point(533, 22);
+            this.btnListarPeriodo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnListarPeriodo.Name = "btnListarPeriodo";
+            this.btnListarPeriodo.Size = new System.Drawing.Size(111, 52);
+            this.btnListarPeriodo.TabIndex = 16;
+            this.btnListarPeriodo.Text = "Listar por periodo";
+            this.btnListarPeriodo.UseVisualStyleBackColor = true;
+            this.btnListarPeriodo.Click += new System.EventHandler(this.btnListarPeriodo_Click);
+            // 
             // ListagemCompromissos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(656, 450);
+            this.Controls.Add(this.btnListarPeriodo);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -162,5 +179,7 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnInserir;
         private System.Windows.Forms.ListBox listCompromissosFuturos;
+        private System.Windows.Forms.Button btnListarPeriodo;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

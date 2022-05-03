@@ -75,6 +75,7 @@ namespace eAgenda_2._0.TelasCompromisso
 
             CadastroCompromissos tela = new CadastroCompromissos();
 
+            tela.Compromisso = compromissoSelecionado;
             DialogResult resultado = tela.ShowDialog();
 
             if (resultado == DialogResult.OK)
@@ -102,6 +103,28 @@ namespace eAgenda_2._0.TelasCompromisso
                 repositorioCompromisso.Excluir(compromissoSelecionado);
                 CarregarCompromissos();
             }
+        }
+
+        private void btnListarPeriodo_Click(object sender, EventArgs e)
+        {
+            ListarPorPeriodo tela = new ListarPorPeriodo();
+            tela.ShowDialog();
+        }
+
+        private void listCompromissosFuturos_MouseHover(object sender, EventArgs e)
+        {
+            toolTip1.InitialDelay = 2000;
+            toolTip1.ReshowDelay = 4000;
+            toolTip1.SetToolTip(listCompromissosFuturos, "Duplo clique para detalhes do compromisso");
+        }
+
+        private void listCompromissosFuturos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Compromisso compromissoSelecionado = (Compromisso)listCompromissosFuturos.SelectedItem;
+
+            DetalhesCompromisso tela = new DetalhesCompromisso(compromissoSelecionado);
+            tela.Compromisso = compromissoSelecionado;
+            tela.ShowDialog();
         }
     }
 }

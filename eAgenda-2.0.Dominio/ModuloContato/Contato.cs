@@ -27,12 +27,7 @@ namespace eAgenda_2._0.Dominio.ModuloContato
 
         public override string ToString()
         {
-            return "Número: " + numero + Environment.NewLine +
-                "Nome: " + Nome + Environment.NewLine +
-                "Email: " + Email + Environment.NewLine +
-                "Telefone: " + Telefone + Environment.NewLine +
-                "Empresa: " + Empresa + Environment.NewLine +
-                "Cargo: " + Cargo + Environment.NewLine;
+            return $"Número: {Numero} - Nome: {Nome} - Email: {Email}";
         }
     }
 }

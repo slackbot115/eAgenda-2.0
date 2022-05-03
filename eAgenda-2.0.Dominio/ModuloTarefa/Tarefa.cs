@@ -34,11 +34,11 @@ namespace eAgenda_2._0.Dominio
 
             if (DataConclusao.HasValue)
             {
-                return $"Número: {Numero}, Título: {Titulo}, Percentual: {percentual}, " +
+                return $"Número: {Numero} - Título: {Titulo} - Percentual: {percentual}, " +
                     $"Concluída: {DataConclusao.Value.ToShortDateString()}";
             }
 
-            return $"Número: {Numero}, Título: {Titulo}, Prioridade: {Prioridade}, Percentual: {percentual}";
+            return $"Número: {Numero} - Título: {Titulo} - Prioridade: {Prioridade} - Percentual: {percentual}";
         }
 
         public void AdicionarItem(ItemTarefa item)

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnInserir = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.tabContatos = new System.Windows.Forms.TabPage();
             this.tabContatosOrdenados = new System.Windows.Forms.TabPage();
             this.listContatosOrdenados = new System.Windows.Forms.ListBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl1.SuspendLayout();
             this.tabContatos.SuspendLayout();
             this.tabContatosOrdenados.SuspendLayout();
@@ -81,6 +83,8 @@
             this.listContatos.Name = "listContatos";
             this.listContatos.Size = new System.Drawing.Size(635, 324);
             this.listContatos.TabIndex = 0;
+            this.listContatos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listContatos_MouseDoubleClick);
+            this.listContatos.MouseHover += new System.EventHandler(this.listContatos_MouseHover);
             // 
             // tabControl1
             // 
@@ -153,5 +157,6 @@
         private System.Windows.Forms.TabPage tabContatos;
         private System.Windows.Forms.TabPage tabContatosOrdenados;
         private System.Windows.Forms.ListBox listContatosOrdenados;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
