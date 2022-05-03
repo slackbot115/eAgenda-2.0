@@ -88,7 +88,7 @@ namespace eAgenda_2._0
         {
             foreach (Tarefa tarefa in tarefas)
             {
-                if (txtTitulo.Text == tarefa.Titulo)
+                if (txtTitulo.Text == tarefa.Titulo && txtNumero.Text == "0")
                     return false;
             }
 

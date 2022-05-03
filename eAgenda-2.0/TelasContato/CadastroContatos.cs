@@ -109,7 +109,7 @@ namespace eAgenda_2._0.TelasContato
             foreach (Contato contato in contatos)
             {
 
-                if (txtEmail.Text == contato.Email || maskTelefone.Text == contato.Telefone)
+                if (txtEmail.Text == contato.Email || maskTelefone.Text == contato.Telefone && txtNumero.Text == "0")
                     return false;
             }
 
